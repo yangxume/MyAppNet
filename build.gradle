@@ -1,0 +1,48 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.2.71'
+    repositories {
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
+        }
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
+        }
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+
+    retrofitDep = [
+            "rxjava2"                    : "io.reactivex.rxjava2:rxjava:2.1.0",
+            "rxandroid"                  : "io.reactivex.rxjava2:rxandroid:2.0.1",
+            "retrofit2"                  : 'com.squareup.retrofit2:retrofit:2.3.0',
+            "retrofit2_adapter_rxjava2"  : 'com.squareup.retrofit2:adapter-rxjava2:2.3.0',
+            "retrofit2_converter_gson"   : 'com.squareup.retrofit2:converter-gson:2.3.0',
+            "okhttp3_logging_interceptor": 'com.squareup.okhttp3:logging-interceptor:3.8.1',
+//            "okhttp3"                    : 'com.squareup.okhttp3:okhttp:3.14.1'
+
+    ]
+
+}
