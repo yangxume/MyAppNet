@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.ResponseBody;
@@ -23,45 +24,38 @@ public class MainActivity extends AppCompatActivity {
     private static String BASE_URL = "https://www.wanandroid.com";
 
     private static ScheduledExecutorService mExecutorService = Executors.newSingleThreadScheduledExecutor();
+    private Button btn_okhttp3_execute;
+    private Button btn_okhttp3_enequeue;
+    private Button btn_retrofit_execute;
+    private Button btn_retrofit_enequeue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.btn_test_okhttp3_execute).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                okhttp3Execute();
-            }
-        });
+        btn_okhttp3_execute = findViewById(R.id.btn_test_okhttp3_execute);
+        btn_okhttp3_enequeue = findViewById(R.id.btn_test_okhttp3_enqueue);
+        btn_retrofit_execute = findViewById(R.id.btn_test_retrofit_execute);
+        btn_retrofit_enequeue = findViewById(R.id.btn_test_retrofit_enqueue);
 
-        findViewById(R.id.btn_test_okhttp3_enqueue).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                okhttp3Enqueue();
-            }
-        });
+        setOnClickListener();
 
-        findViewById(R.id.btn_test_retrofit_execute).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mExecutorService.execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        retrofitExecute();
-                    }
-                });
-            }
-        });
+    }
 
-        findViewById(R.id.btn_test_retrofit_enqueue).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                retrofitEnqueue();
-            }
-        });
+    private void setOnClickListener() {
 
+
+        btn_okhttp3_enequeue.setOnClickListener( v -> okhttp3Enqueue());
+
+
+        btn_okhttp3_execute.setOnClickListener(v -> okhttp3Execute());
+
+        btn_okhttp3_enequeue.setOnClickListener(v -> okhttp3Enqueue());
+
+        btn_retrofit_execute.setOnClickListener(v -> mExecutorService.execute(() -> retrofitExecute()));
+
+        btn_retrofit_enequeue.setOnClickListener(v -> retrofitEnqueue());
     }
 
     private static String url = "https://www.wanandroid.com/wxarticle/chapters/json";

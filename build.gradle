@@ -1,18 +1,33 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
 buildscript {
-    ext.kotlin_version = '1.2.71'
+    ext.kotlin_version = '1.2.30'
     repositories {
+        maven {
+            url "http://10.60.0.100:8081/repository/okayclient_snapshot/"
+        }
+        maven {
+            url "http://10.60.0.100:8081/repository/okayclient/"
+        }
+        maven {
+            url "http://10.60.0.100:8081/repository/okayrom/"
+        }
+        maven {
+            url "http://10.60.0.100:8081/repository/okayrom_snapshot/"
+        }
         maven {
             url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
         }
-        google()
         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:3.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
+        classpath "com.networkbench.newlens.agent.android:agent-gradle-plugin:2.8.1"
+        //classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -21,18 +36,54 @@ buildscript {
 allprojects {
     repositories {
         maven {
+            url "http://10.60.0.100:8081/repository/okayclient_snapshot/"
+        }
+        maven {
+            url "http://10.60.0.100:8081/repository/okayclient/"
+        }
+        maven {
+            url "http://10.60.0.100:8081/repository/okayrom/"
+        }
+        maven {
+            url "http://10.60.0.100:8081/repository/okayrom_snapshot/"
+        }
+        maven {
             url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
         }
-        google()
         jcenter()
+        google()
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
 ext {
+    dependencies = [
+
+            recyclerview    : 'com.android.support:recyclerview-v7:23.4.0',
+            appcompat       : 'com.android.support:appcompat-v7:23.4.0',
+            design          : 'com.android.support:design:23.4.0',
+            support         : 'com.android.support:support-v4:23.4.0',
+            cardview        : 'com.android.support:cardview-v7:23.4.0',
+
+            libTeacher      : 'com.okay.client_app:libTeacher:1.4',
+            libTAccount     : 'com.okay.client_app:libTAccount:1.1',
+            libsvg          : 'com.okay.client_app:libsvg:1.3.12',
+            libtexerciseview: 'com.okay.client_app:libtexerciseview:2.17.0',
+
+            libsqlite       : 'com.okay.client_app:libsqlite:1.0',
+            libsqlite       : 'com.okay.client_app:libCache:2.0.6',
+            libImageLoader  : 'com.okay.client_app:libImageLoader:1.1',
+            libTPersoncenter: 'com.okay.client_app:libTPersoncenter:2.20.1-SNAPSHOT',
+            libLog          : 'com.okay.client_app:libLog:2018112302',
+
+            libTPhotoView   : 'com.okay.client_app:libTPhotoView:1.0.4',
+            libTPlayerView  : 'com.okay.client_app:libTPlayerView:1.5.0',
+            libTX5Webview   : 'com.okay.client_app:libTX5Webview:1.2',
+
+
+    ]
 
     retrofitDep = [
             "rxjava2"                    : "io.reactivex.rxjava2:rxjava:2.1.0",
