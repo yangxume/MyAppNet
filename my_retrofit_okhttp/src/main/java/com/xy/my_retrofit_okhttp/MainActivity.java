@@ -45,9 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setOnClickListener() {
 
-
         btn_okhttp3_enequeue.setOnClickListener( v -> okhttp3Enqueue());
-
 
         btn_okhttp3_execute.setOnClickListener(v -> okhttp3Execute());
 
