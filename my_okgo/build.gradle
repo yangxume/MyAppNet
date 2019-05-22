@@ -6,7 +6,7 @@ android {
 
 
     defaultConfig {
-        applicationId "com.xy.my_retrofit_okhttp"
+        applicationId "com.xy.my_okgo"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
@@ -22,23 +22,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
     }
 
 }
 
-def librarys = rootProject.ext.dependencies
+def libarys = rootProject.ext.dependencies
 
 dependencies {
 
-    librarys.each{k,v -> implementation v}
+    libarys.each{k,v -> implementation v}
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
 }
