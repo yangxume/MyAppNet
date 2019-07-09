@@ -117,7 +117,7 @@ public class ExampleUnitTest {
     private void retrofitExecute() {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl("https://logreport-hotfix.xk12.cn")
                 .build();
         try {
 

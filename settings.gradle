@@ -1,1 +1,1 @@
-include ':app', ':my_retrofit_okhttp', ':my_okgo'
+include ':app', ':my_retrofit_okhttp', ':my_okgo', ':my_android_networking', ':lib_net', ':mylibrary_a', ':mylibrary_b'
